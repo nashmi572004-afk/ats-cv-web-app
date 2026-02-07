@@ -6,6 +6,10 @@ from cv_builder import generate_cv_content
 st.set_page_config(layout="wide", page_title="ATS CV Creator")
 st.title("ATS-Friendly CV Creator")
 
+# Inject custom CSS
+with open("ats-cv-web-app/style.css") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
 # Function to reset all CV data
 def reset_cv_data():
     st.session_state.cv_data = CVData()
@@ -210,34 +214,6 @@ with input_column:
 with preview_column:
     st.header("Live CV Preview")
     
-    st.markdown("""
-        <style>
-            .a4-page {
-                width: 210mm;
-                min-height: 297mm;
-                margin: 10mm auto;
-                border: 1px solid #D3D3D3;
-                border-radius: 5px;
-                background: white;
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-                padding: 20mm;
-                box-sizing: border-box;
-            }
-            @media print {
-                .a4-page {
-                    margin: 0;
-                    border: initial;
-                    border-radius: initial;
-                    width: initial;
-                    min-height: initial;
-                    box-shadow: initial;
-                    background: initial;
-                    page-break-after: always;
-                }
-            }
-        </style>
-    """, unsafe_allow_html=True)
-
     if st.session_state.cv_data.personal_info.name:
         cv_output = generate_cv_content(st.session_state.cv_data)
         st.markdown(f"<div class='a4-page'>{cv_output}</div>", unsafe_allow_html=True)
