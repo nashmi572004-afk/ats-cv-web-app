@@ -13,7 +13,7 @@ def reset_cv_data():
 
 if st.button("Reset All Fields", help="Clear all entered information and start fresh."):
     reset_cv_data()
-    st.experimental_rerun() # Rerun to reflect the cleared state
+    st.rerun() # Rerun to reflect the cleared state
 
 # Initialize session state for data storage using dataclasses
 if 'cv_data' not in st.session_state:
@@ -88,7 +88,7 @@ with input_column:
                     st.write(f"GPA: {edu.gpa}")
                 if st.button(f"Remove Education {i+1}", key=f"remove_edu_{i}"):
                     st.session_state.cv_data.education.pop(i)
-                    st.experimental_rerun()
+                    st.rerun()
                 st.markdown("---")
         else:
             st.info("No education details added yet.")
@@ -123,7 +123,7 @@ with input_column:
                 st.markdown(exp.description.replace('\n', '  \n- ')) # Render description as bullet points
                 if st.button(f"Remove Experience {i+1}", key=f"remove_exp_{i}"):
                     st.session_state.cv_data.experience.pop(i)
-                    st.experimental_rerun()
+                    st.rerun()
                 st.markdown("---")
         else:
             st.info("No work experience added yet.")
@@ -151,7 +151,7 @@ with input_column:
         new_tech_skill = st.text_input("Add Technical Skill", key="new_technical_skill", help="e.g., Python, SQL, AWS, Docker.")
         if st.button("Add Technical Skill", key="add_tech_button"):
             add_skill("technical", new_tech_skill)
-            st.experimental_rerun()
+            st.rerun()
         if st.session_state.cv_data.skills.technical:
             for i, skill in enumerate(st.session_state.cv_data.skills.technical):
                 col1, col2 = st.columns([0.8, 0.2])
@@ -167,7 +167,7 @@ with input_column:
         new_soft_skill = st.text_input("Add Soft Skill", key="new_soft_skill", help="e.g., Communication, Teamwork, Problem-solving.")
         if st.button("Add Soft Skill", key="add_soft_button"):
             add_skill("soft", new_soft_skill)
-            st.experimental_rerun()
+            st.rerun()
         if st.session_state.cv_data.skills.soft:
             for i, skill in enumerate(st.session_state.cv_data.skills.soft):
                 col1, col2 = st.columns([0.8, 0.2])
@@ -183,7 +183,7 @@ with input_column:
         new_lang_skill = st.text_input("Add Language", key="new_languages_skill", help="e.g., English, Spanish, French.")
         if st.button("Add Language", key="add_lang_button"):
             add_skill("languages", new_lang_skill)
-            st.experimental_rerun()
+            st.rerun()
         if st.session_state.cv_data.skills.languages:
             for i, skill in enumerate(st.session_state.cv_data.skills.languages):
                 col1, col2 = st.columns([0.8, 0.2])

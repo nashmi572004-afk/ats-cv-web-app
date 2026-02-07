@@ -2,11 +2,11 @@ from io import BytesIO
 from docx import Document
 from docx.shared import Inches, Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, ListFlowable, ListItem, PageBreak
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, ListFlowable, ListItem, PageBreak, HRFlowable
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch, mm
 from reportlab.lib.pagesizes import A4 # Using A4 as per metric preference
-from reportlab.platypus import Line, KeepTogether
+from reportlab.platypus import HRFlowable, KeepTogether
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT
 from reportlab.lib.colors import black
 
@@ -117,7 +117,7 @@ def export_to_pdf(cv_data: CVData, filename: str) -> BytesIO:
     # --- Summary ---
     if cv_data.personal_info.summary:
         story.append(Paragraph("SUMMARY", styles['SectionTitleStyle']))
-        story.append(Line(doc.width, 1, black)) # Horizontal line separator
+        story.append(HRFlowable(width="100%", thickness=1, color=black)) # Horizontal line separator
         story.append(Spacer(1, 2*mm))
         story.append(Paragraph(cv_data.personal_info.summary, styles['NormalTextStyle']))
         story.append(Spacer(1, 4*mm)) # Space after summary
@@ -125,7 +125,7 @@ def export_to_pdf(cv_data: CVData, filename: str) -> BytesIO:
     # --- Education ---
     if cv_data.education:
         story.append(Paragraph("EDUCATION", styles['SectionTitleStyle']))
-        story.append(Line(doc.width, 1, black)) # Horizontal line separator
+        story.append(HRFlowable(width="100%", thickness=1, color=black)) # Horizontal line separator
         story.append(Spacer(1, 2*mm))
         for edu in cv_data.education:
             edu_details = []
@@ -147,7 +147,7 @@ def export_to_pdf(cv_data: CVData, filename: str) -> BytesIO:
     # --- Experience ---
     if cv_data.experience:
         story.append(Paragraph("EXPERIENCE", styles['SectionTitleStyle']))
-        story.append(Line(doc.width, 1, black)) # Horizontal line separator
+        story.append(HRFlowable(width="100%", thickness=1, color=black)) # Horizontal line separator
         story.append(Spacer(1, 2*mm))
         for exp in cv_data.experience:
             exp_details = []
@@ -175,7 +175,7 @@ def export_to_pdf(cv_data: CVData, filename: str) -> BytesIO:
     # --- Skills ---
     if cv_data.skills.technical or cv_data.skills.soft or cv_data.skills.languages:
         story.append(Paragraph("SKILLS", styles['SectionTitleStyle']))
-        story.append(Line(doc.width, 1, black)) # Horizontal line separator
+        story.append(HRFlowable(width="100%", thickness=1, color=black)) # Horizontal line separator
         story.append(Spacer(1, 2*mm))
         
         # Using a list for skills to handle multiple types
