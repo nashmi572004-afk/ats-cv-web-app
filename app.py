@@ -7,7 +7,7 @@ st.set_page_config(layout="wide", page_title="ATS CV Creator")
 st.title("ATS-Friendly CV Creator")
 
 # Inject custom CSS
-with open("ats-cv-web-app/style.css") as f:
+with open("style.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # Function to reset all CV data
