@@ -1,0 +1,191 @@
+
+/* General Body and Main Container Styles */
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+    background-color: #f0f2f6;
+    line-height: 1.6;
+}
+
+.main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Header Styles */
+h1, h2, h3, h4, h5, h6 {
+    color: #1e3a8a; /* Darker blue for headings */
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Streamlit specific adjustments for responsiveness */
+@media (max-width: 768px) {
+    .stApp > header {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .main .block-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    /* Adjust columns to stack on small screens */
+    .st-dg, .st-dh { /* These classes might change, inspect them in browser if issues */
+        width: 100% !important;
+    }
+    .st-dg + .st-dh { /* Give some spacing when columns stack */
+        margin-top: 2rem;
+    }
+}
+
+/* Input Field Styling */
+.stTextInput > div > div > input,
+.stTextArea > div > div > textarea,
+.stSelectbox > div > div > button {
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: all 0.2s ease-in-out;
+}
+
+.stTextInput > div > div > input:focus,
+.stTextArea > div > div > textarea:focus,
+.stSelectbox > div > div > button:focus {
+    border-color: #3b82f6; /* Blue focus ring */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+    outline: none;
+}
+
+/* Hover effects for input fields */
+.stTextInput > div > div > input:hover,
+.stTextArea > div > div > textarea:hover {
+    border-color: #999;
+}
+
+/* Button Styling */
+.stButton > button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stButton > button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.stButton > button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Specific styling for the remove buttons in lists */
+.stButton[key*="remove_"] > button {
+    background-color: #ef4444; /* Red for remove buttons */
+}
+
+.stButton[key*="remove_"] > button:hover {
+    background-color: #dc2626; /* Darker red on hover */
+}
+
+/* Tabs Styling */
+.stTabs [data-baseweb="tab-list"] button [data-testid="stMarkdownContainer"] p {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Expander Styling */
+.streamlit-expanderHeader {
+    background-color: #e0e7ff; /* Light blue background for expander headers */
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #c3dafe;
+}
+
+.streamlit-expanderContent {
+    background-color: #ffffff;
+    border-left: 3px solid #6366f1; /* Accent border */
+    padding: 1rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+
+/* Info, Warning, Error messages */
+.stAlert {
+    border-radius: 0.5rem;
+}
+
+/* Custom CSS for the A4 page preview */
+.a4-page {
+    width: 210mm; /* A4 width */
+    min-height: 297mm; /* A4 height */
+    margin: 10mm auto;
+    border: 1px solid #D3D3D3;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    padding: 20mm;
+    box-sizing: border-box;
+    overflow-x: auto; /* Allow horizontal scrolling if content overflows */
+}
+
+@media screen and (max-width: 1024px) {
+    .a4-page {
+        width: 90vw; /* Use viewport width for smaller screens */
+        min-height: auto; /* Adjust height dynamically */
+        margin: 1rem auto;
+        padding: 1rem;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media print {
+    .a4-page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
+
+/* Spinner and Loading Indicators */
+.stSpinner > div > div {
+    color: #6366f1; /* Streamlit's primary color */
+}
+
+/* Custom classes for responsive columns and better spacing */
+.stColumn { /* Target Streamlit columns */
+    padding: 1rem;
+}
+
+/* Make sure the columns stack on small devices for better readability */
+@media (max-width: 768px) {
+    .st-emotion-cache-1ldf15l.e1f1d6gn2, /* Target the column container */
+    .st-emotion-cache-vdzdzd.e1f1d6gn3 { /* Target individual columns if needed */
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    /* Adjust the specific column widths for smaller screens */
+    .st-emotion-cache-1ldf15l.e1f1d6gn2 > div:first-child, /* Input column */
+    .st-emotion-cache-1ldf15l.e1f1d6gn2 > div:last-child {  /* Preview column */
+        width: 100% !important;
+    }
+}
