@@ -59,7 +59,12 @@ with input_column:
         st.header("Education")
         with st.expander("Add New Education", expanded=True):
             with st.form("education_form", clear_on_submit=True):
-                degree = st.text_input("Degree (e.g., Bachelor of Science)", help="e.g., Bachelor of Science, Master of Arts, PhD.")
+                common_degrees = ["Bachelor of Science", "Master of Arts", "PhD", "Associate Degree", "High School Diploma", "MBA", "Juris Doctor (J.D.)", "Doctor of Medicine (M.D.)", "Other"]
+                selected_degree = st.selectbox("Degree", common_degrees, help="Select your degree or choose 'Other' to enter a custom one.")
+                if selected_degree == "Other":
+                    degree = st.text_input("Custom Degree", help="e.g., Bachelor of Engineering in Robotics")
+                else:
+                    degree = selected_degree
                 major = st.text_input("Major (e.g., Computer Science)", help="e.g., Computer Science, Business Administration, English Literature.")
                 institution = st.text_input("Institution Name", help="Name of the university or college.")
                 location = st.text_input("Location (City, Country)", help="e.g., London, UK; New York, USA.")
@@ -97,7 +102,15 @@ with input_column:
         st.header("Work Experience")
         with st.expander("Add New Experience", expanded=True):
             with st.form("experience_form", clear_on_submit=True):
-                title = st.text_input("Job Title", help="e.g., Software Engineer, Project Manager, Data Analyst.")
+                common_titles = ["Software Engineer", "Data Scientist", "Project Manager", "Product Manager", "Marketing Specialist", 
+                                 "Human Resources Manager", "Financial Analyst", "Graphic Designer", "Customer Service Representative", 
+                                 "Operations Manager", "Business Analyst", "DevOps Engineer", "UI/UX Designer", "Consultant", "Sales Manager", 
+                                 "Accountant", "Researcher", "Educator", "Other"]
+                selected_title = st.selectbox("Job Title", common_titles, help="Select your job title or choose 'Other' to enter a custom one.")
+                if selected_title == "Other":
+                    title = st.text_input("Custom Job Title", help="e.g., Senior AI/ML Engineer")
+                else:
+                    title = selected_title
                 company = st.text_input("Company Name", help="Name of the company you worked for.")
                 location = st.text_input("Location (City, Country)", help="e.g., Berlin, Germany; Paris, France.")
                 start_date = st.text_input("Start Date (e.g., YYYY-MM)", help="Format: YYYY-MM (e.g., 2022-07).")
@@ -196,9 +209,38 @@ with input_column:
 
 with preview_column:
     st.header("Live CV Preview")
+    
+    st.markdown("""
+        <style>
+            .a4-page {
+                width: 210mm;
+                min-height: 297mm;
+                margin: 10mm auto;
+                border: 1px solid #D3D3D3;
+                border-radius: 5px;
+                background: white;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                padding: 20mm;
+                box-sizing: border-box;
+            }
+            @media print {
+                .a4-page {
+                    margin: 0;
+                    border: initial;
+                    border-radius: initial;
+                    width: initial;
+                    min-height: initial;
+                    box-shadow: initial;
+                    background: initial;
+                    page-break-after: always;
+                }
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
     if st.session_state.cv_data.personal_info.name:
         cv_output = generate_cv_content(st.session_state.cv_data)
-        st.markdown(cv_output)
+        st.markdown(f"<div class='a4-page'>{cv_output}</div>", unsafe_allow_html=True)
 
         st.download_button(
             label="Download CV as Markdown (.md)",

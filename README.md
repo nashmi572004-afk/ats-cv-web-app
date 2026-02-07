@@ -16,6 +16,8 @@ This is a Python-based web application designed to help users create highly prof
     *   **Real-time Input Validation:** Provides immediate feedback and helpful guidance messages for form fields to ensure accurate data entry.
     *   **Dynamic Skill Management:** Allows users to add and remove individual technical skills, soft skills, and languages on the fly with improved visual feedback.
     *   **"Reset All Fields" Button:** A prominent button to quickly clear all entered data and start fresh, enhancing user control.
+    *   **Live Preview as A4 Export:** The live CV preview now visually mimics an A4 page, providing a realistic representation of the final exported document.
+    *   **Dropdown Fields for Education and Experience:** Key text input fields like "Degree" in Education and "Job Title" in Experience have been converted to dropdown select boxes with comprehensive lists of common options, improving user-friendliness and consistency.
 
 *   **Professional & Robust CV Generation:**
     *   **Consistent Formatting:** PDF and DOCX exports are now generated directly from structured data, ensuring consistent, professional-grade formatting, typography, and layout across all document types. The PDF export specifically adheres to a professional template, replicating visual layout, font styles, line separators, and bullet points.
@@ -89,8 +91,9 @@ This command will discover and run all test files within the `tests/` directory.
 2.  Fill in your details in each section. Utilize the expanders to organize your input. Pay attention to the real-time validation messages.
 3.  Use the "Reset All Fields" button at the top to clear all data and start fresh at any time.
 4.  In the "Skills" section, add your technical skills, soft skills, and languages dynamically using the input fields and "Add" buttons. You can remove skills individually.
-5.  Observe the "Live CV Preview" on the right side of the screen, which updates instantly as you input your information.
-6.  Once satisfied, use the download buttons in the live preview section to get your professionally formatted CV in Markdown (`.md`), plain text (`.txt`), PDF (`.pdf`), or DOCX (`.docx`) format.
+5.  Observe the "Live CV Preview" on the right side of the screen, which now appears as an A4 page and updates instantly as you input your information.
+6.  When adding "Education" or "Experience", use the new dropdown menus for "Degree" and "Job Title" respectively, selecting from common options or choosing "Other" to enter a custom value.
+7.  Once satisfied, use the download buttons in the live preview section to get your professionally formatted CV in Markdown (`.md`), plain text (`.txt`), PDF (`.pdf`), or DOCX (`.docx`) format.
 
 ## Contributing
 
